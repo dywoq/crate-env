@@ -8,5 +8,6 @@ license-file = "LICENSE"
 repository = "https://github.com/dywoq/crate-env"
 authors = ["dywoq <dywoq.contact@gmail.com>"]
 readme = "README.md"
+documentation = "https://docs.rs/crate-env"
 
 [dependencies]
