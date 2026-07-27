@@ -7,5 +7,6 @@ license = "Apache-2.0"
 license-file = "LICENSE"
 repository = "https://github.com/dywoq/crate-env"
 authors = ["dywoq <dywoq.contact@gmail.com>"]
+readme = "README.md"
 
 [dependencies]
