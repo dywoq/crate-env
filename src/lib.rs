@@ -100,34 +100,37 @@ impl Default for Information {
 /// ```
 #[macro_export]
 macro_rules! crate_capture_information {
-    () => {{
-        let mut information = Information::default();
+    () => {
+        Information {
+            cargo_path: option_env!("CARGO_PATH"),
+            manifest_dir: option_env!("CARGO_MANIFEST_DIR"),
+            manifest_path: option_env!("CARGO_MANIFEST_PATH"),
 
-        information.cargo_path = option_env!("CARGO_PATH");
-        information.manifest_dir = option_env!("CARGO_MANIFEST_DIR");
-        information.manifest_path = option_env!("CARGO_MANIFEST_PATH");
+            version: Version {
+                major: option_env!("CARGO_PKG_VERSION_MAJOR"),
+                minor: option_env!("CARGO_PKG_VERSION_MINOR"),
+                patch: option_env!("CARGO_PKG_VERSION_PATCH"),
+                pre: option_env!("CARGO_PKG_VERSION_PRE"),
+                full: option_env!("CARGO_PKG_VERSION"),
+            },
 
-        information.version.major = option_env!("CARGO_PKG_VERSION_MAJOR");
-        information.version.minor = option_env!("CARGO_PKG_VERSION_MINOR");
-        information.version.patch = option_env!("CARGO_PKG_VERSION_PATCH");
-        information.version.pre = option_env!("CARGO_PKG_VERSION_PRE");
+            package: Package {
+                authors: option_env!("CARGO_PKG_AUTHORS"),
+                name: option_env!("CARGO_PKG_NAME"),
+                description: option_env!("CARGO_PKG_DESCRIPTION"),
+                homepage: option_env!("CARGO_PKG_HOMEPAGE"),
+                repository: option_env!("CARGO_PKG_REPOSITORY"),
+                license: option_env!("CARGO_PKG_LICENSE"),
+                license_file: option_env!("CARGO_PKG_LICENSE_FILE"),
+                rust_version: option_env!("CARGO_PKG_RUST_VERSION"),
+                readme: option_env!("CARGO_PKG_README"),
+            },
 
-        information.package.authors = option_env!("CARGO_PKG_AUTHORS");
-        information.package.name = option_env!("CARGO_PKG_NAME");
-        information.package.description = option_env!("CARGO_PKG_DESCRIPTION");
-        information.package.homepage = option_env!("CARGO_PKG_HOMEPAGE");
-        information.package.repository = option_env!("CARGO_PKG_REPOSITORY");
-        information.package.license = option_env!("CARGO_PKG_LICENSE");
-        information.package.license_file = option_env!("CARGO_PKG_LICENSE_FILE");
-        information.package.rust_version = option_env!("CARGO_PKG_RUST_VERSION");
-        information.package.readme = option_env!("CARGO_PKG_README");
-
-        information.crate_name = option_env!("CARGO_CRATE_NAME");
-        information.bin_name = option_env!("CARGO_BIN_NAME");
-        information.out_dir = option_env!("OUT_DIR");
-        information.primary_package = option_env!("CARGO_PRIMARY_PACKAGE");
-        information.target_tmpdir = option_env!("CARGO_TARGET_TMPDIR");
-
-        information
-    }};
+            crate_name: option_env!("CARGO_CRATE_NAME"),
+            bin_name: option_env!("CARGO_BIN_NAME"),
+            out_dir: option_env!("OUT_DIR"),
+            primary_package: option_env!("CARGO_PRIMARY_PACKAGE"),
+            target_tmpdir: option_env!("CARGO_TARGET_TMPDIR"),
+        }
+    };
 }
