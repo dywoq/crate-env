@@ -1,6 +1,11 @@
 [package]
 name = "crate-env"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
+description = "Retrieve your crate information at compile-time in a structured way, instead of using env! (no_std support)"
+license = "Apache-2.0"
+license-file = "LICENSE"
+repository = "https://github.com/dywoq/crate-env"
+authors = ["dywoq <dywoq.contact@gmail.com>"]
 
 [dependencies]
