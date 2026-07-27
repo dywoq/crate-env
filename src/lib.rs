@@ -90,6 +90,14 @@ impl Default for Information {
 ///
 /// Due to the heavy operations (such as allocating the strings within the static storage),
 /// It's strongly recommended to use this macro once to avoid binary bloat.
+///
+/// # Example
+///
+/// ```
+/// use crate_env::{crate_capture_information, Information};
+/// let information = crate_capture_information!();
+/// println!("Package name: {}, Crate name: {}", information.package.name.unwrap(), information.crate_name.unwrap());
+/// ```
 #[macro_export]
 macro_rules! crate_capture_information {
     () => {{
